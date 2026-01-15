@@ -175,7 +175,7 @@ export default function Payment() {
     }
 
     try {
-      const { data } = await axios.post('http://localhost:5000/api/payment/create-order', { 
+      const { data } = await axios.post('https://rrgnameversebyritik.onrender.com/api/payment/create-order', { 
         amount: amount * 100,
         currency: 'INR',
         notes: {

@@ -80,7 +80,7 @@ export default function AdminUpload({ token, onLogout }) {
 
   const fetchUploadHistory = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/admin/uploads', {
+      const response = await axios.get('https://rrgnameversebyritik.onrender.com/api/admin/uploads', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (response.data.success) {
@@ -94,7 +94,7 @@ export default function AdminUpload({ token, onLogout }) {
 
   const fetchDashboardStats = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/admin/stats', {
+      const response = await axios.get('https://rrgnameversebyritik.onrender.com/api/admin/stats', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (response.data.success) {
@@ -186,7 +186,7 @@ export default function AdminUpload({ token, onLogout }) {
     formData.append('timestamp', new Date().toISOString());
 
     try {
-      const response = await axios.post('http://localhost:5000/api/admin/upload', formData, {
+      const response = await axios.post('https://rrgnameversebyritik.onrender.com/api/admin/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -318,7 +318,7 @@ export default function AdminUpload({ token, onLogout }) {
     if (!window.confirm('Are you sure you want to delete this file?')) return;
 
     try {
-      const response = await axios.delete(`http://localhost:5000/api/admin/uploads/${fileId}`, {
+      const response = await axios.delete(`https://rrgnameversebyritik.onrender.com/api/admin/uploads/${fileId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -364,7 +364,7 @@ export default function AdminUpload({ token, onLogout }) {
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:5000/api/admin/logout', {}, {
+      await axios.post('https://rrgnameversebyritik.onrender.com/api/admin/logout', {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

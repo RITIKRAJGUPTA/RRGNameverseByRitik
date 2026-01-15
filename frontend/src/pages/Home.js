@@ -178,7 +178,7 @@ export default function Home() {
     setTimeout(async () => {
       try {
         if (navigator.onLine) {
-          await axios.get('http://localhost:5000/api/gita/daily-shlok');
+          await axios.get('https://rrgnameversebyritik.onrender.com/api/gita/daily-shlok');
           console.log('Next shlok prefetched');
         }
       } catch (error) {
@@ -195,7 +195,7 @@ export default function Home() {
     
     try {
       setError(null);
-      const res = await axios.get('http://localhost:5000/api/gita/daily-shlok', {
+      const res = await axios.get('https://rrgnameversebyritik.onrender.com/api/gita/daily-shlok', {
         timeout: 10000, // 10 second timeout
         headers: {
           'Cache-Control': 'max-age=86400', // Cache for 24 hours

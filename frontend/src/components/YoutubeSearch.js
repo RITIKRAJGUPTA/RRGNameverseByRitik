@@ -58,7 +58,7 @@ export default function YoutubeSearch() {
     
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/youtube/search?q=${encodeURIComponent(searchTerm)}&maxResults=20`
+        `https://rrgnameversebyritik.onrender.com/api/youtube/search?q=${encodeURIComponent(searchTerm)}&maxResults=20`
       );
       
       // Add mock data for missing fields if needed

@@ -60,7 +60,7 @@ export default function Gallery() {
   const fetchImages = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('http://localhost:5000/api/gallery/photos');
+      const res = await axios.get('https://rrgnameversebyritik.onrender.com/api/gallery/photos');
       
       if (res.data.success) {
         // Enhance images with metadata
@@ -219,7 +219,7 @@ export default function Gallery() {
     try {
       setUploadProgress({ uploaded: 0, total: files.length });
       
-      const response = await axios.post('http://localhost:5000/api/gallery/upload', formData, {
+      const response = await axios.post('https://rrgnameversebyritik.onrender.com/api/gallery/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         onUploadProgress: (progressEvent) => {
           const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);

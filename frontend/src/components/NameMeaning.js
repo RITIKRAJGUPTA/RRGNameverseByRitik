@@ -51,7 +51,7 @@ export default function NameMeaning() {
     setInsights([]);
     
     try {
-      const { data } = await axios.post('http://localhost:5000/api/ai/meaning', { name });
+      const { data } = await axios.post('https://rrgnameversebyritik.onrender.com/api/ai/meaning', { name });
       
       if (data.data && data.data.meaning) {
         const meaningText = data.data.meaning;

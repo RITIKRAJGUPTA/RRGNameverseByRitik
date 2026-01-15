@@ -144,7 +144,7 @@ export default function ContactForm() {
         formData.append("attachment", attachment);
       }
 
-      await axios.post("http://localhost:5000/api/contact/submit", formData, {
+      await axios.post("https://rrgnameversebyritik.onrender.com/api/contact/submit", formData, {
         headers: { "Content-Type": "multipart/form-data" }
       });
 
