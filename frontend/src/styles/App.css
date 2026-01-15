@@ -1,0 +1,20 @@
+body {
+  padding-top: 70px;
+}
+@keyframes slideRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: slideRight 10s linear infinite;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: serif;
+}
