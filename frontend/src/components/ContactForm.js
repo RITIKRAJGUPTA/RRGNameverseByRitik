@@ -137,16 +137,12 @@ export default function ContactForm() {
     setFormStatus("submitting");
     
     try {
-      const formData = new FormData();
-      Object.keys(data).forEach(key => formData.append(key, data[key]));
-      formData.append("captchaToken", captchaToken);
-      if (attachment) {
-        formData.append("attachment", attachment);
-      }
-
-      await axios.post("https://rrgnameversebyritik.onrender.com/api/contact/submit", formData, {
-        headers: { "Content-Type": "multipart/form-data" }
-      });
+      await axios.post(
+  "https://rrgnameversebyritik.onrender.com/api/contact/submit",
+  {
+    ...data
+  }
+);
 
       setFormStatus("success");
       setContactInfo(data);
