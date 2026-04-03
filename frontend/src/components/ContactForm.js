@@ -9,7 +9,6 @@ import {
   FiDownload, FiShare2, FiCopy, FiSave, FiCalendar
 } from "react-icons/fi";
 import { FaLinkedin, FaGithub, FaTwitter, FaWhatsapp } from "react-icons/fa";
-import ReCAPTCHA from "react-google-recaptcha";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import confetti from "canvas-confetti";
@@ -25,7 +24,6 @@ export default function ContactForm() {
     mode: "onChange"
   });
 
-  const [captchaToken, setCaptchaToken] = useState(null);
   const [formStatus, setFormStatus] = useState("idle"); // idle, submitting, success, error
   const [attachment, setAttachment] = useState(null);
   const [contactInfo, setContactInfo] = useState({
@@ -42,7 +40,6 @@ export default function ContactForm() {
   const [showPreview, setShowPreview] = useState(false);
   const fileInputRef = useRef(null);
   const formRef = useRef(null);
-  const recaptchaRef = useRef(null);
 
   const contactMethods = [
     {
@@ -162,11 +159,7 @@ export default function ContactForm() {
       // Reset form
       reset();
       setAttachment(null);
-      if (recaptchaRef.current) {
-        recaptchaRef.current.reset();
-      }
-      setCaptchaToken(null);
-
+  
       // Remove used draft if any
       if (savedDrafts.length > 0) {
         const updatedDrafts = savedDrafts.slice(1);
