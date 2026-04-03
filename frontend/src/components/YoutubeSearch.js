@@ -255,6 +255,425 @@ export default function YoutubeSearch() {
     <>
       <style>
         {`
+        /* Add these styles at the beginning of your <style> tag */
+
+/* Mobile-first responsive styles */
+@media (max-width: 768px) {
+  /* Container padding */
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Header adjustments */
+  .search-header {
+    padding: 20px 0 30px !important;
+  }
+
+  .search-header h1 {
+    font-size: 1.8rem !important;
+  }
+
+  .search-header p {
+    font-size: 0.9rem !important;
+    padding: 0 15px !important;
+  }
+
+  /* Search input */
+  .search-input-container {
+    margin: 0 16px !important;
+    max-width: calc(100% - 32px) !important;
+  }
+
+  .search-input {
+    padding: 14px 50px 14px 20px !important;
+    font-size: 1rem !important;
+  }
+
+  .search-btn {
+    width: 42px !important;
+    height: 42px !important;
+    right: 8px !important;
+  }
+
+  /* Suggestions bar */
+  .suggestions-bar {
+    gap: 8px !important;
+    padding: 12px 16px !important;
+    margin-bottom: 0 !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .suggestion-chip {
+    padding: 6px 14px !important;
+    font-size: 0.85rem !important;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Controls bar - stack on mobile */
+  .d-flex.justify-content-between.align-items-center {
+    flex-direction: column !important;
+    gap: 15px !important;
+    align-items: stretch !important;
+  }
+
+  .d-flex.align-items-center.gap-3 {
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+
+  /* Stats card - make more compact */
+  .stats-card {
+    padding: 10px 15px !important;
+  }
+
+  .stats-card h4 {
+    font-size: 1.1rem !important;
+  }
+
+  .stats-card h6 {
+    font-size: 0.7rem !important;
+  }
+
+  /* Filter panel */
+  .filters-panel {
+    padding: 15px !important;
+    margin: 0 0 20px 0 !important;
+  }
+
+  .filters-panel .row {
+    flex-direction: column !important;
+  }
+
+  .filters-panel .col-md-3 {
+    width: 100% !important;
+    margin-bottom: 15px !important;
+  }
+
+  .filter-btn {
+    padding: 6px 12px !important;
+    font-size: 0.8rem !important;
+    margin: 0 4px 8px !important;
+  }
+
+  /* Video grid - single column on mobile */
+  .row-cols-1 {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .row-cols-1 .col {
+    width: 100% !important;
+    margin-bottom: 16px !important;
+  }
+
+  /* Video card */
+  .video-card {
+    display: block !important;
+  }
+
+  /* List view on mobile */
+  .video-card.d-flex {
+    flex-direction: column !important;
+  }
+
+  .video-thumbnail[style*="width: 320px"] {
+    width: 100% !important;
+  }
+
+  /* Video info */
+  .video-info {
+    padding: 12px !important;
+  }
+
+  .video-title {
+    font-size: 0.95rem !important;
+    -webkit-line-clamp: 2 !important;
+  }
+
+  .video-channel {
+    font-size: 0.8rem !important;
+  }
+
+  .video-stats {
+    font-size: 0.75rem !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  /* Action buttons */
+  .d-flex.gap-2.mt-3 {
+    gap: 8px !important;
+  }
+
+  .action-btn {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  /* Watch history */
+  .row-cols-2 {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .row-cols-2 .col {
+    width: 100% !important;
+  }
+
+  .history-item {
+    padding: 8px !important;
+  }
+
+  .history-item img {
+    height: auto !important;
+    aspect-ratio: 16/9 !important;
+    object-fit: cover !important;
+  }
+
+  .history-item small {
+    font-size: 0.7rem !important;
+  }
+
+  /* Player modal */
+  .video-player-modal {
+    padding: 10px !important;
+  }
+
+  .player-container {
+    width: 100% !important;
+    margin: 0 !important;
+    border-radius: 8px !important;
+  }
+
+  .close-player {
+    top: 10px !important;
+    right: 10px !important;
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .player-container .p-4 {
+    padding: 12px !important;
+  }
+
+  .player-container h4 {
+    font-size: 1rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .player-container .d-flex.justify-content-between {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .player-container .btn {
+    padding: 6px 12px !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Loading spinner */
+  .loading-spinner {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  /* Empty state */
+  .text-center.py-5 {
+    padding: 40px 20px !important;
+  }
+
+  .text-center.py-5 h4 {
+    font-size: 1.2rem !important;
+  }
+
+  /* Alert message */
+  .alert {
+    margin: 0 16px 16px 16px !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+/* Tablet styles (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  /* Tablet grid - 2 columns */
+  .row-cols-md-2 {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .row-cols-md-2 .col {
+    width: 100% !important;
+  }
+
+  /* Watch history on tablet - 3 columns */
+  .row-cols-md-3 {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 15px !important;
+  }
+
+  /* Header */
+  .search-header h1 {
+    font-size: 2.2rem !important;
+  }
+
+  /* Stats card */
+  .stats-card {
+    padding: 12px 18px !important;
+  }
+}
+
+/* Small mobile (up to 480px) */
+@media (max-width: 480px) {
+  /* Header title */
+  .search-header h1 {
+    font-size: 1.4rem !important;
+  }
+
+  .search-header h1 .me-3 {
+    margin-right: 8px !important;
+  }
+
+  /* Controls */
+  .d-flex.align-items-center.gap-3 {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+
+  .layout-toggle {
+    order: 1 !important;
+  }
+
+  select.form-select {
+    font-size: 0.8rem !important;
+    padding: 6px 24px 6px 12px !important;
+  }
+
+  /* Filter buttons */
+  .filter-btn {
+    padding: 5px 10px !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Watch history - single column on very small */
+  .row-cols-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  /* Player modal */
+  .player-container .d-flex.gap-2 {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .player-container .btn {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Video stats */
+  .video-stats {
+    font-size: 0.7rem !important;
+  }
+
+  /* Duration badge */
+  .duration-badge {
+    padding: 2px 6px !important;
+    font-size: 0.7rem !important;
+  }
+}
+
+/* Landscape mode on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .search-header {
+    padding: 15px 0 20px !important;
+  }
+
+  .suggestions-bar {
+    padding: 8px 16px !important;
+  }
+
+  .video-player-modal {
+    padding: 5px !important;
+  }
+
+  .player-container {
+    max-height: 90vh !important;
+  }
+
+  .player-iframe {
+    height: 50vh !important;
+  }
+}
+
+/* Touch-friendly adjustments */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger tap targets on mobile */
+  .action-btn,
+  .filter-btn,
+  .suggestion-chip,
+  .layout-btn,
+  .search-btn,
+  .close-player {
+    min-width: 40px !important;
+    min-height: 40px !important;
+  }
+
+  /* Remove hover effects that don't work well on touch */
+  .video-card:hover {
+    transform: none !important;
+  }
+
+  .video-thumbnail:hover .play-overlay {
+    opacity: 0 !important;
+  }
+
+  /* Active state for touch feedback */
+  .video-card:active {
+    transform: scale(0.98) !important;
+  }
+
+  .action-btn:active,
+  .filter-btn:active {
+    transform: scale(0.95) !important;
+  }
+}
+
+/* Fix for overflow issues */
+.youtube-container {
+  overflow-x: hidden !important;
+  width: 100% !important;
+}
+
+.container {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+/* Ensure images don't overflow */
+img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Better touch scrolling */
+.suggestions-bar,
+.watch-history-scroll {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
           .youtube-container {
             background: ${currentTheme.bg};
             color: ${currentTheme.text};

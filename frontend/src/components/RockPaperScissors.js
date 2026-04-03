@@ -268,6 +268,493 @@ export default function RockPaperScissors() {
     <>
       <style>
         {`
+        
+/* ============================================
+   MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+/* Tablet & Mobile Base */
+@media (max-width: 992px) {
+  .game-card {
+    padding: 20px !important;
+    margin: 0 10px !important;
+  }
+  
+  .score-card {
+    padding: 12px !important;
+    min-width: 80px !important;
+  }
+  
+  .score-card h2 {
+    font-size: 2rem !important;
+  }
+  
+  .score-card h5 {
+    font-size: 0.8rem !important;
+  }
+  
+  .choice-btn {
+    width: 90px !important;
+    height: 90px !important;
+    font-size: 2rem !important;
+  }
+  
+  .choice-name {
+    font-size: 0.7rem !important;
+    margin-top: 6px !important;
+  }
+  
+  .choice-display {
+    width: 100px !important;
+    height: 100px !important;
+    font-size: 2.5rem !important;
+  }
+  
+  .result-display {
+    font-size: 1.8rem !important;
+  }
+}
+
+/* Mobile Styles (up to 768px) */
+@media (max-width: 768px) {
+  /* Container padding */
+  .container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  
+  /* Header */
+  .rps-container {
+    padding-top: 60px !important;
+  }
+  
+  .rps-container .display-4 {
+    font-size: 1.8rem !important;
+  }
+  
+  .rps-container .display-4 .me-3,
+  .rps-container .display-4 .ms-3 {
+    margin-left: 8px !important;
+    margin-right: 8px !important;
+  }
+  
+  .rps-container .lead {
+    font-size: 0.9rem !important;
+    padding: 0 15px !important;
+  }
+  
+  /* Theme selector */
+  .theme-selector {
+    gap: 8px !important;
+  }
+  
+  .theme-dot {
+    width: 25px !important;
+    height: 25px !important;
+  }
+  
+  /* Game card */
+  .game-card {
+    padding: 15px !important;
+    border-radius: 16px !important;
+  }
+  
+  /* Controls row - stack vertically */
+  .d-flex.justify-content-between.align-items-center.mb-4 {
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+  
+  .mode-badge {
+    align-self: center !important;
+    font-size: 0.85rem !important;
+    padding: 6px 12px !important;
+  }
+  
+  .d-flex.gap-3 {
+    justify-content: center !important;
+    gap: 10px !important;
+  }
+  
+  .control-btn {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 0.9rem !important;
+  }
+  
+  /* Instructions alert */
+  .alert-info {
+    padding: 12px !important;
+    font-size: 0.8rem !important;
+    margin: 0 0 15px 0 !important;
+  }
+  
+  .alert-info h5 {
+    font-size: 0.9rem !important;
+  }
+  
+  .alert-info ul {
+    padding-left: 20px !important;
+    margin-top: 5px !important;
+  }
+  
+  .alert-info li {
+    font-size: 0.75rem !important;
+  }
+  
+  /* Score Board - 3 cards row */
+  .row.justify-content-center.mb-5 {
+    margin-bottom: 20px !important;
+  }
+  
+  .score-card {
+    padding: 8px !important;
+    margin: 0 4px !important;
+    min-width: 70px !important;
+  }
+  
+  .score-card h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 0 !important;
+  }
+  
+  .score-card h5 {
+    font-size: 0.7rem !important;
+    margin-bottom: 4px !important;
+  }
+  
+  .score-card small {
+    font-size: 0.6rem !important;
+  }
+  
+  /* Streak & Round row */
+  .d-flex.justify-content-center.gap-4.mt-3 {
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+  }
+  
+  .streak-badge {
+    padding: 4px 10px !important;
+    font-size: 0.7rem !important;
+  }
+  
+  .text-muted {
+    font-size: 0.7rem !important;
+  }
+  
+  /* Timer circle */
+  .timer-circle {
+    width: 70px !important;
+    height: 70px !important;
+    font-size: 2rem !important;
+  }
+  
+  .text-center.mb-4 p {
+    font-size: 0.8rem !important;
+    margin-top: 8px !important;
+  }
+  
+  /* Player Choices - Mobile layout */
+  .d-flex.justify-content-center.gap-4 {
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+  }
+  
+  .choice-btn {
+    width: 80px !important;
+    height: 80px !important;
+    font-size: 1.8rem !important;
+  }
+  
+  .choice-btn .choice-name {
+    font-size: 0.65rem !important;
+    margin-top: 5px !important;
+  }
+  
+  /* VS Battle Area */
+  .vs-container {
+    height: auto !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .vs-badge {
+    padding: 5px 12px !important;
+    font-size: 1rem !important;
+    top: -15px !important;
+    position: relative !important;
+    z-index: 20 !important;
+  }
+  
+  /* Row alignment for VS area */
+  .vs-container .row {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px !important;
+  }
+  
+  .vs-container .col-md-5 {
+    text-align: center !important;
+    width: 100% !important;
+  }
+  
+  .vs-container .col-md-2 {
+    display: none !important;
+  }
+  
+  /* VS badge reposition for mobile */
+  .vs-badge {
+    position: relative !important;
+    display: inline-block !important;
+    margin: 10px auto !important;
+    background: rgba(0,0,0,0.8) !important;
+  }
+  
+  .choice-display {
+    width: 90px !important;
+    height: 90px !important;
+    font-size: 2rem !important;
+  }
+  
+  .choice-display .choice-name {
+    font-size: 0.7rem !important;
+  }
+  
+  .mt-3 strong {
+    font-size: 0.8rem !important;
+  }
+  
+  /* Result Display */
+  .result-display {
+    font-size: 1.5rem !important;
+    margin: 15px 0 !important;
+  }
+  
+  .text-center p.text-muted {
+    font-size: 0.7rem !important;
+  }
+  
+  /* Achievements */
+  .mt-4 h5 {
+    font-size: 0.9rem !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .achievement-badge {
+    font-size: 0.65rem !important;
+    padding: 4px 8px !important;
+  }
+  
+  /* History & Stats */
+  .mt-4 h5 {
+    font-size: 0.9rem !important;
+  }
+  
+  .history-item {
+    padding: 8px !important;
+    font-size: 0.7rem !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+  
+  .history-item span {
+    font-size: 0.7rem !important;
+  }
+  
+  /* Action Buttons - Stack on mobile */
+  .d-flex.justify-content-center.gap-3.mt-5 {
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+  }
+  
+  .btn-outline-light,
+  .btn-outline-warning,
+  .btn-outline-info,
+  .btn-outline-success {
+    width: 100% !important;
+    padding: 10px !important;
+    font-size: 0.85rem !important;
+  }
+  
+  /* Footer */
+  .text-center.mt-5 p {
+    font-size: 0.7rem !important;
+    padding: 0 10px !important;
+  }
+}
+
+/* Small Mobile (up to 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+  
+  .game-card {
+    padding: 12px !important;
+  }
+  
+  .display-4 {
+    font-size: 1.4rem !important;
+  }
+  
+  /* Score cards - even smaller */
+  .score-card {
+    min-width: 55px !important;
+  }
+  
+  .score-card h2 {
+    font-size: 1.2rem !important;
+  }
+  
+  .score-card h5 {
+    font-size: 0.6rem !important;
+  }
+  
+  /* Choice buttons */
+  .choice-btn {
+    width: 65px !important;
+    height: 65px !important;
+    font-size: 1.5rem !important;
+  }
+  
+  .choice-btn .choice-name {
+    font-size: 0.55rem !important;
+  }
+  
+  /* Choice display */
+  .choice-display {
+    width: 75px !important;
+    height: 75px !important;
+    font-size: 1.6rem !important;
+  }
+  
+  /* VS badge */
+  .vs-badge {
+    padding: 4px 10px !important;
+    font-size: 0.8rem !important;
+  }
+  
+  /* Result */
+  .result-display {
+    font-size: 1.2rem !important;
+  }
+}
+
+/* Landscape mode for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .rps-container {
+    padding-top: 50px !important;
+  }
+  
+  .game-card {
+    padding: 12px !important;
+  }
+  
+  .score-card {
+    padding: 5px !important;
+  }
+  
+  .score-card h2 {
+    font-size: 1.3rem !important;
+  }
+  
+  .choice-btn {
+    width: 60px !important;
+    height: 60px !important;
+    font-size: 1.3rem !important;
+  }
+  
+  .choice-btn .choice-name {
+    font-size: 0.5rem !important;
+  }
+  
+  .vs-container .row {
+    flex-direction: row !important;
+    gap: 10px !important;
+  }
+  
+  .choice-display {
+    width: 65px !important;
+    height: 65px !important;
+    font-size: 1.4rem !important;
+  }
+  
+  .result-display {
+    font-size: 1rem !important;
+    margin: 10px 0 !important;
+  }
+  
+  .btn-outline-light,
+  .btn-outline-warning,
+  .btn-outline-info,
+  .btn-outline-success {
+    padding: 6px !important;
+    font-size: 0.7rem !important;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .choice-btn:hover:not(:disabled) {
+    transform: none !important;
+  }
+  
+  .choice-btn:active {
+    transform: scale(0.95) !important;
+    transition: transform 0.05s !important;
+  }
+  
+  .control-btn:active {
+    transform: scale(0.9) !important;
+  }
+  
+  /* Larger tap targets */
+  .choice-btn,
+  .control-btn,
+  .theme-dot,
+  .btn {
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+  
+  /* Better touch feedback */
+  .choice-btn.active {
+    transform: scale(1.05) !important;
+  }
+}
+
+/* Ensure no overflow issues */
+.rps-container {
+  overflow-x: hidden !important;
+}
+
+.container {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+/* Fix for very small devices */
+@media (max-width: 360px) {
+  .score-card {
+    min-width: 50px !important;
+  }
+  
+  .score-card h2 {
+    font-size: 1rem !important;
+  }
+  
+  .choice-btn {
+    width: 55px !important;
+    height: 55px !important;
+    font-size: 1.2rem !important;
+  }
+  
+  .d-flex.justify-content-center.gap-4 {
+    gap: 8px !important;
+  }
+}
           .rps-container {
             background: ${currentTheme.bg};
             min-height: 100vh;
